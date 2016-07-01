@@ -95,6 +95,17 @@
     [self animateCurrentFrame];
 }
 
+- (void) viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    for (IFTTTScrollViewPageConstraintAnimation *animation in self.scrollViewPageConstraintAnimations) {
+        animation.pageWidth = self.pageWidth;
+    }
+    
+    [self setPageOffset:self.pageOffset];
+    [self animateCurrentFrame];
+}
+
 #pragma mark - iOS8+ Resizing
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
